@@ -5,16 +5,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
-# or
+# Install dependencies
+yarn
+# Run dev version
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Build
+yarn build
+# Run locally the built version
+yarn start
+# Run tests
+yarn test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+When run dev o build version, Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
