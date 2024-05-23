@@ -4,6 +4,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
+node --version : v21.7.1
+
 ```bash
 # Install dependencies
 yarn

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { CalcKeys, CalcText, Container } from './style';
 import ButtonCalc from '../button';
+import { buttons } from './buttonSources';
 
 const Calculator: React.FC = () => {
   const [inputValue, setInputValue] = useState('0');
@@ -23,40 +24,35 @@ const Calculator: React.FC = () => {
     }
   };
 
+  const handlerClick = (v: any, number: any) => {
+    switch (v) {
+      case 'limpiar':
+        limpiarPantalla();
+        break;
+      case 'borrar':
+        borrarUltimoCaracter();
+        break;
+      case 'calculo':
+        realizarCalculo();
+        break;
+      case 'numero':
+        agregarNumero(number);
+        break;
+    }
+  };
+
   return (
     <Container>
       <CalcText>{inputValue}</CalcText>
       <CalcKeys>
-        <ButtonCalc onClick={() => limpiarPantalla()} others>
-          AC
-        </ButtonCalc>
-        <ButtonCalc onClick={() => borrarUltimoCaracter()} others>
-          DEL
-        </ButtonCalc>
-        <ButtonCalc onClick={() => agregarNumero('%')} operate others>
-          %
-        </ButtonCalc>
-        <ButtonCalc onClick={() => agregarNumero('/')} operate>
-          /
-        </ButtonCalc>
-        {['7', '8', '9', '4', '5', '6', '1', '2', '3'].map((num) => (
-          <ButtonCalc key={num} onClick={() => agregarNumero(num)}>
-            {num}
-          </ButtonCalc>
+        {buttons.map((btn: any, index) => (
+          <ButtonCalc
+            onClick={() => handlerClick(btn?.type, btn?.value)}
+            cls={btn?.class}
+            key={index}
+            val={btn.value}
+          />
         ))}
-        <ButtonCalc onClick={() => agregarNumero('-')} operate>
-          -
-        </ButtonCalc>
-        <ButtonCalc onClick={() => agregarNumero('+')} operate>
-          +
-        </ButtonCalc>
-        <ButtonCalc onClick={() => agregarNumero('0')} zero>
-          0
-        </ButtonCalc>
-        <ButtonCalc onClick={() => agregarNumero('.')}>,</ButtonCalc>
-        <ButtonCalc onClick={() => realizarCalculo()} operate>
-          =
-        </ButtonCalc>
       </CalcKeys>
     </Container>
   );
